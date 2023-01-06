@@ -6,6 +6,7 @@ Please follow these steps to set your React Native Environment:
   4)Download Yarn
   5)Download Java JDK
   6)Download React Native
+  7)Download Git
   
   As for the Dependencies used within the project-:
     "@react-native-community/masked-view": "^0.1.11",
