@@ -1,7 +1,8 @@
 import React from 'react'
-import {View, Text,Image } from 'react-native'
+import {View, Text,Image, Button } from 'react-native'
 import SwiperComponent from '../components/SwiperComponent'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TextInput, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+
 
 const Detail = ({navigation}) => {
     return(
@@ -37,7 +38,8 @@ const Detail = ({navigation}) => {
                             <Text style={{
                                 fontWeight:"bold",
                                 fontSize:28,
-                                color:"#62636a"
+                                color:"#62636a",
+                                bottom: 20,
                             }}>
                                 Jab & Cross Punch
                             </Text>
@@ -65,10 +67,14 @@ const Detail = ({navigation}) => {
                                 alignItems:"center",
                                 justifyContent:"center"
                             }}>
-                                <Text style={{
-                                    color:"#FFF",
-                                    fontSize:17
-                                }}>Practice Now</Text>
+                                <TouchableOpacity onPress={ () => navigation.navigate("Practice")}
+                                        title="Practice Now"
+                                        color="#706e6f">
+                                            <Text style={{
+                                                  color:"#FFF",
+                                                  fontSize:17
+                                                }}>Practice Now</Text>
+                                </TouchableOpacity>
                             </View>
 
                             <View style={{

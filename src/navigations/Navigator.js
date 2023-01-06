@@ -7,6 +7,7 @@ import Favorite from '../screens/Favorite'
 import Profile from '../screens/Profile'
 import {Image} from 'react-native'
 
+
 const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
     return(

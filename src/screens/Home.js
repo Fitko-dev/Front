@@ -75,7 +75,7 @@ const Home = ({navigation}) => {
                    />
                    <Image
                     source={require('../images/3.png')}
-                    style={{height:20,width:20}}
+                    style={{height:20,width:20, left:40}}
                    />
                </View>
             </LinearGradient>
@@ -86,7 +86,7 @@ const Home = ({navigation}) => {
                    paddingHorizontal:20,
                    width:"100%",
                    alignItems:"center",
-                   marginTop: 40
+                   
                }}>
                    <View style={{width:"50%"}}>
                         <Text style={{
@@ -119,23 +119,19 @@ const Home = ({navigation}) => {
                         </View>
                    </View>
                </View>
-
+            <ScrollView
+                vertical
+                showsVerticalScrollIndicator={false}
+                style={{height: 1000,
+                        flex: 1}}
+                contentContainerStyle={{ paddingBottom: 100 }}
+                >                
                 <ScrollView 
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     style={{height:400}}
                 >
-                    <LinearGradient
-                        colors={["rgba(0,164,109,0.09)", "transparent"]}
-                        style={{
-                            position:"absolute",
-                            left:0,
-                            right:0,
-                            height:100,
-                            marginTop:220,
-                            top:0
-                        }}
-                    />
+                    
                     <TouchableOpacity 
                         onPress={()=>navigation.navigate("Detail")}
                         style={{
@@ -153,6 +149,9 @@ const Home = ({navigation}) => {
                             source={require('../images/4.png')}
                             style={{
                                 alignSelf: 'center',
+                                width: 100,
+                                height: 150,
+                                borderRadius: 10,
                             }}
                         />
                         <View style={{
@@ -162,13 +161,15 @@ const Home = ({navigation}) => {
                         }}>
                             <Text style={{
                                 fontWeight:"bold",
-                                alignContent: 'center'
+                                alignContent: 'center',
+                                bottom: -10,
+                                left: 10
                             }}>Jab & Cross Punch</Text>
                             <Text style={{
                                 fontWeight:"bold",
                                 color:"#706e6f",
                                 bottom: -40,
-                                left: -30, 
+                                left: -70, 
                             }}>3 mins</Text>
                         </View>
                     </TouchableOpacity>
@@ -187,7 +188,15 @@ const Home = ({navigation}) => {
                         }}
                     >
                         <Image
+                        
                             source={require('../images/5.png')}
+                            style={{
+                                alignSelf: 'center',
+                                width: 100,
+                                height: 150,
+                                borderRadius: 10,
+                                left: -20
+                            }}
                         />
                         <View style={{
                             flexDirection:"row",
@@ -195,12 +204,15 @@ const Home = ({navigation}) => {
                             paddingHorizontal:10
                         }}>
                             <Text style={{
-                                fontWeight:"bold"
-                            }}>Hook punch</Text>
+                                fontWeight:"bold",
+                                alignContent: "center",
+                                bottom: -10,
+                            }}>Uppercut punch</Text>
                             <Text style={{
                                 fontWeight:"bold",
-                                color:"#00a46c",
-                                paddingLeft:45
+                                color:"#706e6f",
+                                bottom: -40,
+                                left: -70,
                             }}>3 mins</Text>
                         </View>
                     </View>
@@ -220,6 +232,12 @@ const Home = ({navigation}) => {
                     >
                         <Image
                             source={require('../images/6.png')}
+                            style={{
+                                width: 100,
+                                height: 152,
+                                alignSelf: 'center',
+                                borderRadius: 10,
+                            }}
                         />
                         <View style={{
                             flexDirection:"row",
@@ -227,18 +245,22 @@ const Home = ({navigation}) => {
                             paddingHorizontal:10
                         }}>
                             <Text style={{
-                                fontWeight:"bold"
-                            }}>Exercise Set 3</Text>
+                                fontWeight:"bold",
+                                alignContent: "center",
+                                bottom: -10,
+                                left: 30
+                            }}>Hook Punch</Text>
                             <Text style={{
                                 fontWeight:"bold",
-                                color:"#00a46c",
-                                paddingLeft:35
-                            }}>4 mins</Text>
+                                color:"#706e6f",
+                                bottom: -40,
+                                left: -30,
+                            }}>3 mins</Text>
                         </View>
                         <Text style={{
                             paddingHorizontal:10,
                             fontWeight:"bold",
-                            color:"#b1e5d3",
+                            color:"#706e6f",
                             paddingTop:3
                         }}>
                         </Text>
@@ -254,7 +276,7 @@ const Home = ({navigation}) => {
                    paddingHorizontal:20,
                    width:"100%",
                    alignItems:"center",
-                   marginTop: 40,
+                   
                }}>
                    <View style={{width:"50%"}}>
                         <Text style={{
@@ -301,6 +323,7 @@ const Home = ({navigation}) => {
                         style={{marginTop:20,borderRadius:10}}
                     />
                 </ScrollView>
+            </ScrollView>
         </View>
         
     )
