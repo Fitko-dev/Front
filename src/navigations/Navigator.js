@@ -8,6 +8,7 @@ import Profile from '../screens/Profile'
 import {Image} from 'react-native'
 
 
+
 const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
     return(
@@ -77,6 +78,7 @@ const HomeStackNavigator = () => {
         <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="Home" component={BottomTabNavigator}/>
             <Stack.Screen name="Detail" component={Detail}/>
+            
         </Stack.Navigator>
     )
 }

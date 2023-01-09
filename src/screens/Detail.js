@@ -2,7 +2,8 @@ import React from 'react'
 import {View, Text,Image, Button } from 'react-native'
 import SwiperComponent from '../components/SwiperComponent'
 import { TextInput, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-
+import Practice from './Practice'
+import { createStackNavigator } from '@react-navigation/stack'
 
 const Detail = ({navigation}) => {
     return(
@@ -67,6 +68,10 @@ const Detail = ({navigation}) => {
                                 alignItems:"center",
                                 justifyContent:"center"
                             }}>
+                                <Stack.Navigator screenOptions={screenOptionStyle}>
+                                    <Stack.Screen name="Practice" component={Practice}/>
+                                </Stack.Navigator>
+                                
                                 <TouchableOpacity onPress={ () => navigation.navigate("Practice")}
                                         title="Practice Now"
                                         color="#706e6f">
@@ -94,4 +99,14 @@ const Detail = ({navigation}) => {
         </View>
     )
 }
+const Stack = createStackNavigator();
+const screenOptionStyle =
+{
+    headerShown: false
+}
+
+        
+
+
+
 export default Detail;
