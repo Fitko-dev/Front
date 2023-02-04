@@ -3,9 +3,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../screens/Home'
 import Detail from '../screens/Detail'
+import Practice from '../screens/Practice'
 import Favorite from '../screens/Favorite'
 import Profile from '../screens/Profile'
 import {Image} from 'react-native'
+
 
 
 const Tab = createBottomTabNavigator();
@@ -72,11 +74,29 @@ const screenOptionStyle = {
     headerShown: false
 }
 
+/*const screens = 
+{
+    Home:
+    {
+        screen: Home
+    },
+    Detail:
+    {
+        screen: Detail
+    },
+    Practice:
+    {
+        screen: Practice
+    }
+}
+*/
 const HomeStackNavigator = () => {
     return(
         <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="Home" component={BottomTabNavigator}/>
             <Stack.Screen name="Detail" component={Detail}/>
+            <Stack.Screen name="Practice" component={Practice}/>
+            
         </Stack.Navigator>
     )
 }

@@ -174,8 +174,8 @@ const Home = ({navigation}) => {
                         </View>
                     </TouchableOpacity>
 
-                    <View 
-                        // onPress={()=>navigation.navigate("Detail")}
+                    <TouchableOpacity
+                        /*onPress={()=>navigation.navigate("Practice")}*/
                         style={{
                             height:250,
                             elevation:2,
@@ -215,7 +215,7 @@ const Home = ({navigation}) => {
                                 left: -70,
                             }}>3 mins</Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
                     <View 
                         // onPress={()=>navigation.navigate("Detail")}
@@ -237,14 +237,12 @@ const Home = ({navigation}) => {
                                 height: 152,
                                 alignSelf: 'center',
                                 borderRadius: 10,
-                                right: 35
                             }}
                         />
                         <View style={{
                             flexDirection:"row",
                             paddingTop:10,
-                            paddingHorizontal:10, 
-                            right: 35
+                            paddingHorizontal:10
                         }}>
                             <Text style={{
                                 fontWeight:"bold",
@@ -273,7 +271,7 @@ const Home = ({navigation}) => {
                 
 
 
-            /**    <View style={{
+               <View style={{
                    flexDirection:"row",
                    paddingHorizontal:20,
                    width:"100%",
@@ -312,7 +310,7 @@ const Home = ({navigation}) => {
                    </View>
                </View>
                 <ScrollView
-                    /*horizontal
+                    horizontal
                     showsHorizontalScrollIndicator={false}
                     style={{marginBottom:-100}}
                 >
@@ -323,7 +321,7 @@ const Home = ({navigation}) => {
                      <Image
                         source={require("../images/19.png")}
                         style={{marginTop:20,borderRadius:10}}
-                    /*/>
+                    />
                 </ScrollView>
             </ScrollView>
         </View>

@@ -5,6 +5,11 @@ import { TextInput, ScrollView, TouchableOpacity } from 'react-native-gesture-ha
 
 
 const Detail = ({navigation}) => {
+    const pressHandler = () => 
+    {
+        navigation.navigate('Practice')
+        
+    }
     return(
         <View style={{
             flex:1,
@@ -67,7 +72,7 @@ const Detail = ({navigation}) => {
                                 alignItems:"center",
                                 justifyContent:"center"
                             }}>
-                                <TouchableOpacity onPress={ () => navigation.navigate("Practice")}
+                                <TouchableOpacity onPress={pressHandler}
                                         title="Practice Now"
                                         color="#706e6f">
                                             <Text style={{
