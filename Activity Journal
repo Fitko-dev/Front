@@ -1,0 +1,14 @@
+The Fitko App was Developped using React Native Technology for crossed platforms.
+
+The main tasks achieved during the first commits were:
+         Create a first design template for the application's front end.
+         Mainly the libraries that were used are:
+          React Navigation to navigate through different screens.
+          React Native Gesture Handler to create scrollable screen
+          React Native Swipers to swipe through the activities demonstative photos
+ The remaining tasks consitsts of:
+         Connecting the backend using React Native BluetoothSerial library
+         Enabling the Bluetooth pairing API & Establishing the connection between
+         the ESP32 and the React Native App.
+         
+          
