@@ -1,72 +1,90 @@
-import React from "react";
-import { View, Text, Image, ImageBackground, Timer, NativeBaseProvider, Center } from "native-base";
-import {TextInput,ScrollView,TouchableOpacity} from 'react-native-gesture-handler';
-import { BleManager } from 'react-native-ble-manager';
-import BLESocket from '../BleSocket';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, PermissionsAndroid} from 'react-native';
+import BluetoothSerial from 'react-native-bluetooth-serial';
+
 const Practice = () => {
+  const [device, setDevice] = useState(null);
+  const [data, setData] = useState(null);
 
-    const BleHandler = () =>
-    {
-        const {
-            requestPermissions,
-            scanForPeripherals,
-            allDevices,
-            connectToDevice,
-            connectedDevice,
-            heartRate,
-            disconnectFromDevice,
-          } = BLESocket();
-
-        BleManager.scan([], 10, (error, devices) =>
+  const requestBluetoothPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
         {
-            console.log('Running Scan');
-            console.log(devices);
-
-            requestPermissions(isGranted => {
-                if (isGranted) {
-                  scanForPeripherals();
-                }})
-            
-            BleManager.connect(device.id)
-            .then(() => {
-                console.log('connected');
-            })
-            .catch((error) => {
-                console.log('Could not connect', error);
-            })
-
-
-        })
-        
+          title: 'Bluetooth Permission',
+          message: 'This app needs access to your Bluetooth',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the Bluetooth');
+        searchForBluetoothDevice();
+      } else {
+        console.log('Bluetooth permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
     }
+  };
 
-    return (
-        <NativeBaseProvider>
-            <TouchableOpacity style={{
-            justifyContent: "center",
-            backgroundColor:"#706e6f",
-            marginTop: "100%",
-            marginLeft: "30%",
-            marginRight: "30%",
-            height:50,
-            borderTopLeftRadius:20,
-            borderTopRightRadius:20,
-            borderBottomLeftRadius:20,
-            borderBottomRightRadius:20,
-            paddingHorizontal:20,
-            }}
-            onPress={BleHandler}
-            >
-                <Text style={{
-                    textAlign: "center",
-                    color: "white",
-                    fontWeight: "bold",
+  const searchForBluetoothDevice = () => {
+    BluetoothSerial.list()
+      .then((devices) => {
+        console.log(devices);
+        setDevice(devices[0]);
+        connectToBluetoothDevice();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-                }}>Connect Device</Text>
-            </TouchableOpacity>
-        </NativeBaseProvider>
-    )
-}
+  const connectToBluetoothDevice = () => {
+    BluetoothSerial.connect(device.id)
+      .then((res) => {
+        console.log(res);
+        listenToData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  const listenToData = () => {
+    BluetoothSerial.on('read', (data) => {
+      setData(data);
+      console.log(data);
+    });
+  };
 
-export default Practice;
+  const sendData = (text) => {
+    BluetoothSerial.write(text)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <TouchableOpacity onPress={requestBluetoothPermission}>
+        <Text>Connect to Bluetooth</Text>
+      </TouchableOpacity>
+      {device && (
+        <View>
+          <Text>Device: {device.name}</Text>
+          <TouchableOpacity onPress={() => sendData('Hello World!')}>
+            <Text>Send Data</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+      {data && <Text>Data: {data}</Text>}
+    </View>
+  );
+};
+
+export default App;
